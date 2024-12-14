@@ -30,8 +30,8 @@
     .editpad {
         display: flex;
         position: absolute;
-        width: 400px;
-        height: 5%;
+        width: 300px;
+        height: 3%;
         font-size: .2em;
         align-items: center;
         justify-content: center;

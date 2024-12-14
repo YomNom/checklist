@@ -1,8 +1,11 @@
 <script>
   import "./app.css";
   import TaskForm from "./lib/TaskForm.svelte";
+  import TaskHistory from "./lib/TaskHistory.svelte";
   import Edit from "/edit-icon.svg";
   import EditTitle from "./lib/EditTitle.svelte";
+  import HeaderBar from "./lib/HeaderBar.svelte";
+  import DisplayTask from "./lib/DisplayTask.svelte";
 
   let task = {
         name: "",
@@ -26,7 +29,16 @@
       due_date: "2023-10-18"
     }
   ]; // Array of task
-
+  let successfulTasks = [
+    { name: "Finish reading 'The Great Gatsby'", description: "Completed reading the book", due_date: "2023-10-10" },
+    { name: "Submit tax returns", description: "Filed and submitted tax returns", due_date: "2023-10-12" },
+    { name: "Organize office desk", description: "Cleaned and organized the office desk", due_date: "2023-10-14" }
+  ];
+  let failedTasks = [
+    { name: "Clean the house", description: "Vacuum, dust, and mop the floors", due_date: "2023-10-10" },
+    { name: "Pay bills", description: "Pay electricity and water bills", due_date: "2023-10-12" },
+    { name: "Read a book", description: "Finish reading 'The Great Gatsby'", due_date: "2023-10-14" }
+  ];
   let selectedTask = null;
   let note_title = "To-Do List";
   let show_title_edit = false;
@@ -54,14 +66,18 @@
   }
 </script>
 
-<main>
-  <nav>
+<nav>
     <div class="title-bar"> 
+      <HeaderBar />
     </div> <!-- title-bar -->
-  </nav>
+</nav>
+
+<main>
+  
   <div class= "content"> 
     <div class="control-panel">   
       <TaskForm on:addTask={addTask} />
+      <TaskHistory {successfulTasks} {failedTasks} />
     </div> <!-- control-panel -->
     <div class="notepad">
       <div class="notepad-header">
@@ -87,7 +103,7 @@
       </div> <!-- notepad-body --> 
     </div> <!-- notepad -->
     <div class="task-outline"> 
-
+      <DisplayTask {tasks} {selectedTask} {successfulTasks} {failedTasks}/>
     </div>
   </div> <!-- content -->
 </main>
@@ -96,13 +112,13 @@
 <style>
   .notepad {
     display: flex;
-    width: 600px;
+    width: 350px;
     height: 800px;
     flex-direction: column;
   }
   .notepad-body {
     display: flex;
-    width: 500px;
+    width: 320px;
     height: 92%;
     align-items: left;
     justify-content: left;
@@ -115,7 +131,7 @@
   } 
   .notepad-header {
     display: flex;
-    width: 500px;
+    width: 320px;
     height: 8%;
     align-items: center;
     justify-content: center;
@@ -128,18 +144,17 @@
   .title-bar {
     display: flex;
     width: 100%;
-    height: 50px;
+    height: 100px;
     align-items: center;
     justify-content: center;
-    background-color: #4fa77b;
-    border: 1px solid #4fa77b;
+    background-color: #050052;
     margin-bottom: 10px;
   }
 
   .task-outline {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 800px;
     height: 800px;
     align-items: center;
     justify-content: center;
@@ -153,11 +168,11 @@
   .task-item {
     display: flex;
     margin-bottom: 20px;
-    margin-left: 80px;
+    margin-left: 40px;
     
     align-items: center;
     justify-content: left;
-    transform: scale(1.5);
+    transform: scale(1.3);
   }
   .item-format {
     margin-left: 10px;
@@ -175,5 +190,6 @@
     background-color: #faf6c3;
     border: 1px solid #4fa77b;
     border-right: 2px solid #b31026;
+    border-radius: 5px 0px 0px 5px;
    }
 </style>

@@ -3,10 +3,10 @@
 @import "tailwindcss/utilities";
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  
+  font-family: 'Yatra One', system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
-
+  background: linear-gradient(to bottom, #8fb8ee, #ffffff);
+  height: 100vh;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

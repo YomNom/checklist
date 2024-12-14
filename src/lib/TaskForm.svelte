@@ -1,7 +1,5 @@
 <script>
     import { createEventDispatcher } from 'svelte';
-    import SubmitButton from "./Submit-Button.svelte";
-    import { Input, Label, Helper } from 'flowbite-svelte';
 
     let task = {
         name: "",
@@ -50,7 +48,7 @@
     <div class="task-overlay" on:click={closeForm}></div>
     <div class="task">
         <div class="task-content">
-            <button class="close-button" on:click={closeForm}>X</button>
+            <button class="close-button" on:click={closeForm}>✖</button>
             <form class="task-form" on:submit|preventDefault={submitForm}>
                 <div class="row"> 
                     <label for="task-name" class="input-label">Task Name</label>
@@ -104,7 +102,7 @@
         cursor: pointer;
     }
     .close-top {
-        margin-top: -10px;
+        margin-top: 5px;
     }
 
     .add-task-button {
@@ -117,15 +115,13 @@
         padding: 0;
         background-color: #f7ab06;
         font-size: 3.5rem;
-        border: 2.5px solid #000000;
+        border: 2.5px solid #000000; 
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         transition: all 0.2s ease-in-out;
     }
 
     .add-task-button:hover {
-        background-color: #f7ab06;
-        color: #704a02;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         transform: translateY(-2px);
     }
